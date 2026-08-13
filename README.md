@@ -60,6 +60,10 @@ See the **[Wiki](https://github.com/jrc13245/SuperCleveRoidMacros/wiki)** for co
 - Debuff time-left conditionals only work on own debuffs unless pfUI libdebuff or Cursive has data
 - Macro line length: 261 characters max (MacroLengthWarn extension prevents crashes)
 
+## Recent Fixes
+
+- Fixed secondary action-bar macro icons being refreshed from the matching main-bar slot after drag-and-drop. The addon now rebuilds its action-slot cache after an action-bar slot change, which handles Turtle WoW's local multibar slot event correctly.
+
 ## Supported Addons
 
 **Unit Frames:** [pfUI](https://github.com/me0wg4ming/pfUI), LunaUnitFrames, XPerl, Grid, CT_UnitFrames, agUnitFrames, and more

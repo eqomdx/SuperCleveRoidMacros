@@ -5912,8 +5912,17 @@ function CleveRoids.Frame:SPELLS_CHANGED()
 end
 
 function CleveRoids.Frame:ACTIONBAR_SLOT_CHANGED()
-    CleveRoids.ClearAction(arg1)
-    CleveRoids.IndexActionSlot(arg1)
+    -- Turtle can report a local button position (1-12) for a multibar drag,
+    -- rather than that button's absolute action slot.  Re-indexing only arg1
+    -- then replaces the matching main-bar cache while leaving the moved
+    -- secondary-bar macro stale.  A drag/drop is infrequent, so rebuild the
+    -- fixed action-slot map and keep every bar's macro cache in sync.
+    if CleveRoids.ready then
+        CleveRoids.IndexActionBars()
+    elseif arg1 then
+        CleveRoids.ClearAction(arg1)
+        CleveRoids.IndexActionSlot(arg1)
+    end
     if CleveRoidMacros.realtime == 0 then
         CleveRoids.QueueActionUpdate()
     end
